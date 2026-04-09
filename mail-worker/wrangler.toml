@@ -6,34 +6,25 @@ keep_vars = true
 [observability]
 enabled = true
 
-#[[d1_databases]]
-#binding = "db"			#d1数据库绑定名默认不可修改
-#database_name = ""		#d1数据库名字
-#database_id = "1d76ef0e-1f44-49a8-828b-b74c4757cbba"		#d1数据库id
-
-#[[kv_namespaces]]
-#binding = "kv"			#kv绑定名默认不可修改
-#id = ""					#kv数据库id
-
-#[[r2_buckets]]
-#binding = "r2"			#r2对象存储绑定名默认不可修改
-#bucket_name = ""		#r2对象存储桶的名字
+# 👇 这里我帮你把 # 号删掉了，系统就能认出数据库了
+[[d1_databases]]
+binding = "db"
+database_name = "cloud-mail-db"
+database_id = "1d76ef0e-1f44-49a8-828b-b74c4757cbba"
 
 [assets]
-binding = "assets"		#静态资源绑定名默认不可修改
-directory = "./dist"	#前端vue项目打包的静态资源存放位置,默认dist
+binding = "assets"
+directory = "./dist"
 not_found_handling = "single-page-application"
 run_worker_first = true
 
 [triggers]
-crons = ["0 16 * * *"]	#定时任务每天晚上12点执行
+crons = ["0 16 * * *"]
 
-
-#[vars]
-#orm_log = false
-#domain = []				#邮件域名可可配置多个 示例: ["example1.com","example2.com"]
-#admin = ""				#管理员的邮箱	示例: admin@example.com
-#jwt_secret = ""			#jwt令牌的密钥,随便填一串字符串
+# 👇 这里我帮你放开了变量，请把 example.com 换成你自己的域名！
+[vars]
+domain = ["mailv.cc.cd"]
+jwt_secret = "suibianxie123456"
 
 [build]
-command = "pnpm --prefix ../mail-vue install && pnpm --prefix ../mail-vue run build"
+command = "npm install -g pnpm && pnpm --prefix ../mail-vue install && pnpm --prefix ../mail-vue run build"
