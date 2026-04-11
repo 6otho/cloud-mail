@@ -27,4 +27,4 @@ domain = ["mailv.cc.cd"]
 jwt_secret = "suibianxie123456"
 
 [build]
-command = "npm install -g pnpm && pnpm --prefix ../mail-vue install && pnpm --prefix ../mail-vue run build"
+command = "pnpm --prefix ../mail-vue install && pnpm --prefix ../mail-vue run build"
